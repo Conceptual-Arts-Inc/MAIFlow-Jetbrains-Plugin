@@ -1,0 +1,44 @@
+<idea-plugin>
+    <id>tech.conceptualarts.maiflow</id>
+    <name>MAIFlow</name>
+    <vendor url="https://app.maiflow.org/profile">Conceptual Arts / MAIFlow</vendor>
+    <description><![CDATA[
+        Manage MAIFlow tasks from a focused IntelliJ Platform tool window. Connect with the same
+        <code>mf_live_…</code> API token used by MAIFlow MCP clients, create and update tasks,
+        filter your workspace, and open full task pages in MAIFlow.<br><br>
+        <a href="https://app.maiflow.org/profile">MAIFlow Profile and support</a>
+    ]]></description>
+    <idea-version since-build="253"/>
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="MAIFlow" anchor="right"
+                    factoryClass="tech.conceptualarts.maiflow.toolwindow.MAIFlowToolWindowFactory"
+                    icon="/META-INF/maiflow-toolwindow.svg"/>
+        <applicationConfigurable parentId="tools" instance="tech.conceptualarts.maiflow.settings.MAIFlowConfigurable"
+                                 id="tech.conceptualarts.maiflow.settings"/>
+    </extensions>
+
+    <actions>
+        <action id="MAIFlow.Open" class="tech.conceptualarts.maiflow.actions.OpenMAIFlowAction"
+                text="Open MAIFlow" description="Open the MAIFlow task window">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        <action id="MAIFlow.Configure" class="tech.conceptualarts.maiflow.actions.ConfigureMAIFlowAction"
+                text="Configure MAIFlow…" description="Configure the MAIFlow MCP endpoint and API token">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        <action id="MAIFlow.CreateTask" class="tech.conceptualarts.maiflow.actions.CreateTaskAction"
+                text="Create MAIFlow Task…" description="Create a task in MAIFlow">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        <action id="MAIFlow.RefreshTasks" class="tech.conceptualarts.maiflow.actions.RefreshTasksAction"
+                text="Refresh MAIFlow Tasks" description="Refresh tasks from MAIFlow">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        <action id="MAIFlow.OpenTask" class="tech.conceptualarts.maiflow.actions.OpenTaskAction"
+                text="Open Selected MAIFlow Task" description="Open the selected task in MAIFlow">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
