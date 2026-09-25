@@ -16,7 +16,7 @@
                     factoryClass="tech.conceptualarts.maiflow.toolwindow.MAIFlowToolWindowFactory"
                     icon="/META-INF/maiflow-logo.svg"/>
         <applicationConfigurable parentId="tools" instance="tech.conceptualarts.maiflow.settings.MAIFlowConfigurable"
-                                 id="tech.conceptualarts.maiflow.settings"/>
+                                 id="tech.conceptualarts.maiflow.settings" displayName="MAIFlow"/>
     </extensions>
 
     <actions>

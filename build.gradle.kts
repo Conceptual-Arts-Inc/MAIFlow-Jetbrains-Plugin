@@ -1,7 +1,6 @@
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
-import org.jetbrains.intellij.platform.gradle.tasks.RunIdeTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.gradle.process.CommandLineArgumentProvider
+import org.gradle.api.tasks.JavaExec
 import org.gradle.api.tasks.testing.Test
 
 plugins {
@@ -31,9 +30,10 @@ tasks.withType<Test>().configureEach {
     jvmArgs("-Xshare:off")
 }
 
-tasks.withType<RunIdeTask>().configureEach {
+tasks.withType<JavaExec>().configureEach {
     // IntelliJ's PathClassLoader makes the default CDS archive unusable.
-    jvmArgumentProviders.add(CommandLineArgumentProvider { listOf("-Xshare:off") })
+    // This also covers buildSearchableOptions, which is a separate JavaExec task.
+    jvmArgs("-Xshare:off")
 }
 
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin.html
